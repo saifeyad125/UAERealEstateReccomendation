@@ -62,6 +62,13 @@ def normalize_data(df):
 
 normalized_df = normalize_data(newdf)
 
+#i want to apply weights to each column:
+normalized_df['bathrooms'] *= 1.0  
+normalized_df['bedrooms'] *= 1.0   
+normalized_df['price'] *= 2.0      
+normalized_df['sizeMin'] *= 1.5
+
+
 # Step 3: Calculate the Euclidean distance
 def euclidean_distance(normalized_df, house1, house2):
     house1_data = normalized_df.loc[house1]

@@ -87,14 +87,34 @@ def get_recommendations(normalized_df, house_index):
     return distances[:5]  # Return top 5 recommendations
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # Example: Use the first house in the dataset for recommendations
-house_index = normalized_df.index[0]  # Get the index of the first house
-recommendations = get_recommendations(normalized_df, house_index)
+house_index = normalized_df.index[:3]  # Get the index of the first 3 houses
+avg_of_houses = normalized_df.loc[house_index].mean()  # Calculate the average of the first 3 houses
+temp_df = pd.concat([normalized_df, pd.DataFrame([avg_of_houses])], ignore_index=True)
+merged_houses_index = temp_df.index[-1] 
+recommendations = get_recommendations(temp_df, merged_houses_index)
 
 # Display recommendations
 print("Top 5 similar houses:")
 recommended_indices = [idx for idx, _ in recommendations]  # Extract recommended indices
 recommended_houses = df.loc[recommended_indices]  # Use the original df to get all columns
+
+
 
 # Print each recommended house
 for i, row in recommended_houses.iterrows():

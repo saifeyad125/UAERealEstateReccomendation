@@ -9,6 +9,8 @@ df = load_data()
 # We will use the columns: #bathrooms, #bedrooms, price, sizeMin
 
 # Select relevant columns
+df.columns = df.columns.str.strip()
+
 newdf = df[['bathrooms', 'bedrooms', 'price', 'sizeMin']]
 
 # Convert all columns to numeric

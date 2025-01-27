@@ -30,6 +30,8 @@ def show_dataframe_popup(df):
 def load_data():
     # Load data
     df = pd.read_csv("/Users/saif/Desktop/University Saif/aldar internship/vscodealdar/real estate/uae_real_estate_2024.csv")
+    df.columns = df.columns.str.strip()
+
     return df
 __all__ = ['pd', 'np', 'plt', 'load_data', 'show_dataframe_popup', 'tk', 'ttk']
 
